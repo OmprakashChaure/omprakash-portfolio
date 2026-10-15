@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="en" id="html-root">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Omprakash Chaure is an AI/ML engineer building LLM applications, computer vision systems, and practical machine-learning products.">
+    <meta name="theme-color" content="#0a1118">
+    <meta name="author" content="Omprakash Chaure">
+    <title>Omprakash Chaure — AI/ML Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" id="navbar">
+        <nav class="nav-wrap" aria-label="Main navigation">
+            <a class="brand" href="#hero" aria-label="Omprakash Chaure, home">
+                <span class="brand-mark">OC<span>.</span></span>
+                <span class="brand-name">Omprakash Chaure<small>AI / ML ENGINEER</small></span>
+            </a>
+            <button class="menu-toggle" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
+                <span></span><span></span>
+            </button>
+            <div class="nav-links" id="mobile-menu">
+                {% for link in nav_links %}
+                {% if link.url %}
+                <a class="nav-link nav-resume" href="{% static 'files/Omprakash_Chaure_Resume.pdf' %}" target="_blank" rel="noopener noreferrer">{{ link.label }} <span aria-hidden="true">↗</span></a>
+                {% else %}
+                <a class="nav-link" href="#{{ link.id }}">{{ link.label }}</a>
+                {% endif %}
+                {% endfor %}
+                <a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">{% block content %}{% endblock %}</main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a class="brand footer-brand" href="#hero">
+                <span class="brand-mark">OC<span>.</span></span>
+                <span class="brand-name">Omprakash Chaure<small>AI / ML ENGINEER</small></span>
+            </a>
+            <p>Building useful intelligence, one system at a time.</p>
+            <a class="back-top" href="#hero">Back to top ↑</a>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Omprakash Chaure</span><span>Designed &amp; built with care</span></div>
+    </footer>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

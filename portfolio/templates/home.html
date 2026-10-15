@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="hero" id="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> AI / ML ENGINEER <span class="eyebrow-location">· PUNE, INDIA</span></p>
+            <h1>Turning ideas<br>into <span>intelligent systems.</span></h1>
+            <p class="hero-lede">I build practical AI products across LLM applications, retrieval systems, computer vision, and deep learning.</p>
+            <div class="hero-actions">
+                <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↓</span></a>
+                <a class="button button-quiet" href="{% static 'files/Omprakash_Chaure_Resume.pdf' %}" target="_blank" rel="noopener noreferrer">View résumé <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="hero-socials">
+                <a href="{{ personal.github }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                <span></span>
+                <a href="{{ personal.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+                <span></span>
+                <a href="mailto:{{ personal.email }}">Email <span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Illustration of an applied AI system pipeline">
+            <div class="visual-topline"><span>SYSTEMS / 001—003</span><span class="live-indicator"><i></i> BUILDING</span></div>
+            <div class="neural-art">
+                <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+                <svg class="network-lines" viewBox="0 0 520 400" role="img" aria-label="Connected nodes representing data flowing through an AI system">
+                    <defs><linearGradient id="lineGlow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7ee7c4" stop-opacity=".14"/><stop offset="1" stop-color="#84b7ff" stop-opacity=".75"/></linearGradient></defs>
+                    <g fill="none" stroke="url(#lineGlow)" stroke-width="1.4">
+                        <path d="M80 95 185 145 290 82 420 118M80 95 180 250 290 82M185 145 180 250 310 300 420 118M290 82 310 300 420 118M180 250 110 330M310 300 420 330M420 118 460 220"/>
+                    </g>
+                    <g fill="#0a1118" stroke="#8ce8c8" stroke-width="2">
+                        <circle cx="80" cy="95" r="6"/><circle cx="185" cy="145" r="8"/><circle cx="290" cy="82" r="5"/><circle cx="420" cy="118" r="9"/><circle cx="180" cy="250" r="5"/><circle cx="310" cy="300" r="8"/><circle cx="460" cy="220" r="5"/><circle cx="110" cy="330" r="4"/><circle cx="420" cy="330" r="4"/>
+                    </g>
+                    <circle cx="290" cy="82" r="18" fill="#8ce8c8" fill-opacity=".08"/><circle cx="420" cy="118" r="26" fill="#84b7ff" fill-opacity=".08"/>
+                </svg>
+                <div class="art-label label-input"><span>01 / INPUT</span><b>Signal</b></div>
+                <div class="art-label label-model"><span>02 / MODEL</span><b>Learning</b></div>
+                <div class="art-label label-output"><span>03 / OUTPUT</span><b>Impact</b></div>
+                <div class="art-center"><span class="center-symbol">∿</span><small>DATA → DECISIONS</small></div>
+            </div>
+            <div class="visual-caption"><span>Applied AI, engineered end to end.</span><span>LLM · CV · DEEP LEARNING</span></div>
+        </div>
+    </div>
+    <div class="hero-footnote"><span>SCROLL TO EXPLORE</span><span class="scroll-line"></span><span>01 / 06</span></div>
+</section>
+
+<section class="quick-stats" aria-label="Portfolio highlights">
+    <div class="stat"><strong>03</strong><span>Selected projects</span></div>
+    <div class="stat"><strong>02</strong><span>Internship experiences</span></div>
+    <div class="stat"><strong>7.61</strong><span>B.E. CGPA · First Class</span></div>
+    <div class="stat stat-focus"><span>FOCUS AREAS</span><strong>LLMs&nbsp; · &nbsp;Vision&nbsp; · &nbsp;Deep Learning</strong></div>
+</section>
+
+<section class="section about-section" id="about">
+    <div class="section-shell about-layout">
+        <div class="section-intro reveal">
+            <p class="section-kicker"><span>01</span> ABOUT</p>
+            <h2>Engineering AI<br>for the <em>real world.</em></h2>
+        </div>
+        <div class="about-copy reveal">
+            <p class="lead-copy">{{ personal.about }}</p>
+            <div class="about-details">
+                <div><span class="detail-label">CURRENT ROLE</span><strong>{{ experience.0.role }}</strong><small>{{ experience.0.company }}</small></div>
+                <div><span class="detail-label">EDUCATION</span><strong>B.E. Artificial Intelligence &amp; ML</strong><small>{{ education.0.institution }}</small></div>
+                <div><span class="detail-label">BASED IN</span><strong>{{ personal.location }}</strong><small>India</small></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section projects-section" id="projects">
+    <div class="section-shell">
+        <div class="section-heading reveal">
+            <div><p class="section-kicker"><span>02</span> SELECTED WORK</p><h2>Projects with a <em>purpose.</em></h2></div>
+            <p class="heading-note">From the first data point to a working system, these projects explore how machine learning can solve concrete problems.</p>
+        </div>
+        <div class="project-filters reveal" aria-label="Filter projects">
+            <button class="filter-btn active" data-filter="all">All work <span>03</span></button>
+            <button class="filter-btn" data-filter="nlp">LLM / NLP</button>
+            <button class="filter-btn" data-filter="dxf">CAD / Retrieval</button>
+            <button class="filter-btn" data-filter="opencv">Computer vision</button>
+        </div>
+        <div class="projects-list">
+            {% for project in projects %}
+            <article class="project-card reveal" data-tags="{{ project.tags|join:',' }}">
+                <div class="project-index">{{ forloop.counter|stringformat:"02d" }}<span> / 03</span></div>
+                <div class="project-main">
+                    <div class="project-meta"><span class="project-type">{% if 'nlp' in project.tags %}LLM APPLICATION{% elif 'dxf' in project.tags %}COMPUTER-AIDED DESIGN{% else %}COMPUTER VISION{% endif %}</span><span class="status-pill {% if project.status == 'Completed' %}is-complete{% else %}is-progress{% endif %}"><i></i>{{ project.status }}</span></div>
+                    <h3>{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+                    <ul class="project-highlights">
+                        {% for feature in project.features %}<li><span>↳</span>{{ feature }}</li>{% endfor %}
+                    </ul>
+                    <div class="tech-list">{% for tech in project.technologies %}<span>{{ tech }}</span>{% endfor %}</div>
+                </div>
+                <div class="project-visual project-visual-{{ forloop.counter }}" aria-hidden="true">
+                    {% if forloop.counter == 1 %}
+                    <div class="mini-window"><div class="window-top"><i></i><i></i><i></i><span>jobquick · resume parse</span></div><div class="match-label">RESUME EXTRACTION ACCURACY</div><div class="match-score">90<span>%+</span></div><div class="match-track"><i></i></div><div class="match-row"><b>SKILLS</b><span>Extracted</span></div><div class="match-row"><b>EXPERIENCE</b><span>Structured</span></div><div class="match-row"><b>JOB RESULTS</b><span>Ranked</span></div></div>
+                    {% elif forloop.counter == 2 %}
+                    <div class="cad-sheet"><span class="cad-label">DXF / FEATURE RETRIEVAL</span><svg viewBox="0 0 300 230"><g fill="none" stroke="#83e5c4" stroke-width="1.5"><path d="M52 45h102v34H52zM88 79v65h99V79M88 112h-34v50h34M187 112h44v50h-44M52 162h179M154 45v-20h39"/><circle cx="120" cy="111" r="18"/><path d="M120 84v8m0 38v8m-27-27h8m38 0h8"/></g><g fill="#94a3ad" font-family="monospace" font-size="9"><text x="47" y="38">REF: 042</text><text x="204" y="105">kNN</text><text x="198" y="176">PLACEMENT</text><text x="42" y="184">GEOMETRY</text></g></svg><div class="cad-footer"><span>RETRIEVE → VALIDATE → PLACE</span><span>● LOCAL PIPELINE</span></div></div>
+                    {% else %}
+                    <div class="vision-sheet"><div class="vision-label">VISUAL SPEECH · SEQUENCE MODEL</div><div class="face-frame"><div class="face-head"><span class="eye eye-a"></span><span class="eye eye-b"></span><span class="mouth"></span><i class="face-point p1"></i><i class="face-point p2"></i><i class="face-point p3"></i><i class="face-point p4"></i></div><div class="frame-corner corner-a"></div><div class="frame-corner corner-b"></div><div class="frame-corner corner-c"></div><div class="frame-corner corner-d"></div><span class="frame-tag">MOUTH ROI</span></div><div class="sequence-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="vision-footer"><span>CNN → LSTM</span><b>76–78% WORD ACCURACY</b></div></div>
+                    {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section capabilities-section" id="skills">
+    <div class="section-shell">
+        <div class="section-heading reveal">
+            <div><p class="section-kicker"><span>03</span> TOOLKIT</p><h2>Built across the <em>stack.</em></h2></div>
+            <p class="heading-note">A practical toolkit for moving from raw data and model experiments to useful applications.</p>
+        </div>
+        <div class="skills-grid">
+            {% for cat in skills %}
+            <article class="skill-card reveal" data-delay="{{ forloop.counter0 }}">
+                <div class="skill-card-top"><span>0{{ forloop.counter }}</span><span class="skill-code">ML / AI</span></div>
+                <h3>{{ cat.category }}</h3>
+                <div class="skill-items">{% for skill in cat.skills %}<span>{{ skill }}</span>{% endfor %}</div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section experience-section" id="experience">
+    <div class="section-shell">
+        <div class="section-heading reveal">
+            <div><p class="section-kicker"><span>04</span> EXPERIENCE</p><h2>Learning by <em>building.</em></h2></div>
+            <p class="heading-note">Hands-on work bringing AI and computer vision into practical engineering products.</p>
+        </div>
+        <div class="experience-list">
+            {% for exp in experience %}
+            <article class="experience-item reveal">
+                <div class="experience-date"><span>{{ exp.period }}</span><i></i></div>
+                <div class="experience-content"><p class="experience-company">{{ exp.company }}</p><h3>{{ exp.role }}</h3><p class="experience-description">{{ exp.description }}</p><ul>{% for h in exp.highlights %}<li>{{ h }}</li>{% endfor %}</ul></div>
+                <span class="experience-number">0{{ forloop.counter }}</span>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section education-section" id="education">
+    <div class="section-shell">
+        <div class="section-heading reveal">
+            <div><p class="section-kicker"><span>05</span> BACKGROUND</p><h2>Foundation &amp; <em>curiosity.</em></h2></div>
+        </div>
+        <div class="background-grid">
+            <div class="education-list">
+                {% for edu in education %}
+                <article class="education-item reveal"><span class="education-year">{{ edu.year }}</span><div><h3>{{ edu.degree }}</h3><p>{{ edu.institution }}</p><small>{{ edu.board }}</small></div><div class="education-score"><strong>{{ edu.score }}</strong><span>{{ edu.score_label }}</span>{% if edu.additional_score %}<small>{{ edu.additional_score }}</small>{% endif %}</div></article>
+                {% endfor %}
+            </div>
+            <aside class="cert-panel reveal"><p class="section-kicker"><span>+</span> CONTINUED LEARNING</p><h3>Certifications &amp;<br>achievements</h3><div class="cert-list">{% for cert in certifications %}<div class="cert-item"><span aria-hidden="true"></span><div><strong>{{ cert.name }}</strong><small>{{ cert.org }}{% if cert.detail %} · {{ cert.detail }}{% endif %}</small></div></div>{% endfor %}</div></aside>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact">
+    <div class="section-shell contact-layout">
+        <div class="contact-copy reveal"><p class="section-kicker"><span>06</span> NEXT STEP</p><h2>Let’s build something <em>useful.</em></h2><p>I’m interested in AI/ML engineering opportunities and thoughtful conversations about applied AI.</p></div>
+        <div class="contact-links reveal"><a class="contact-primary" href="mailto:{{ personal.email }}"><span>Start a conversation</span><b>↗</b><small>{{ personal.email }}</small></a><a href="{{ personal.github }}" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a><a href="{{ personal.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a><a href="{% static 'files/Omprakash_Chaure_Resume.pdf' %}" target="_blank" rel="noopener noreferrer">Résumé <span>↗</span></a></div>
+    </div>
+</section>
+{% endblock %}
